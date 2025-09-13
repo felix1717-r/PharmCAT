@@ -70,8 +70,9 @@ public class DataSerializer {
 
     try (BufferedReader reader = Files.newBufferedReader(jsonFile, StandardCharsets.UTF_8)) {
       DefinitionFile definitionFile = GSON.fromJson(reader, DefinitionFile.class);
+      VariantLocus[] variants = definitionFile.getVariants();
       for (NamedAllele namedAllele : definitionFile.getNamedAlleles()) {
-        namedAllele.initialize(definitionFile.getVariants());
+        namedAllele.initialize(variants);
       }
       return definitionFile;
     }
