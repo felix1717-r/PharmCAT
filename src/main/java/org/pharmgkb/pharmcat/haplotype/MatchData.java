@@ -323,11 +323,7 @@ public class MatchData {
    */
   void generateSamplePermutations() {
 
-    m_permutations = CombinationUtil.generatePermutations(
-        m_sampleMap.values().stream()
-            .sorted()
-            .toList()
-    );
+    m_permutations = CombinationUtil.generatePermutations(new ArrayList<>(m_sampleMap.values()));
     m_isEffectivelyPhased = m_permutations.size() <= 2;
   }
 
